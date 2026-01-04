@@ -1,3 +1,145 @@
+@media (min-width: 1024px) {
+    /* ...existing code... */
+    .btn-primary {
+        width: auto;
+        min-width: 220px;
+        max-width: 400px;
+        font-size: 1.3rem;
+        padding: 1.2rem 3rem;
+        margin: 0 auto;
+        display: inline-block;
+    }
+    .switch-plate {
+        right: 3rem;
+        bottom: 3rem;
+        transform: scale(1.3);
+    }
+    .switch-housing {
+        width: 120px;
+        height: 60px;
+    }
+    .switch-knob {
+        width: 48px;
+        height: 48px;
+    }
+}
+@media (min-width: 1024px) {
+    /* ...existing code... */
+    .masonry-grid {
+        column-count: 4;
+        column-gap: 24px;
+        margin: 0 auto 2rem auto;
+        max-width: 1100px;
+    }
+    .masonry-item img {
+        max-height: 180px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px 0 rgba(109, 40, 217, 0.08);
+    }
+}
+@media (min-width: 1024px) {
+    /* ...existing code... */
+    #schedule {
+        max-width: 900px;
+        margin: 0 auto 4rem auto;
+        border-radius: 18px;
+        padding: 3rem 4rem;
+        background: rgba(255,255,255,0.03);
+    }
+    .schedule-toggle {
+        max-width: 400px;
+        margin: 0 auto 2.5rem auto;
+        padding: 10px;
+    }
+    #timeline {
+        margin-left: 0;
+        padding-left: 2.5rem;
+        border-left: 2px solid var(--border-color);
+    }
+}
+@media (min-width: 1024px) {
+    /* ...existing code... */
+    .event-card {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        align-items: stretch;
+        min-height: 180px;
+        gap: 0;
+        box-shadow: 0 2px 16px 0 rgba(109, 40, 217, 0.07);
+    }
+    .card-img {
+        width: 220px;
+        height: 180px;
+        min-height: 180px;
+        border-radius: 0;
+        object-fit: cover;
+        margin: 0;
+        opacity: 0.9;
+    }
+    .card-body {
+        flex: unset;
+        padding: 2rem 2.5rem 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        min-width: 0;
+    }
+}
+@media (min-width: 1024px) {
+    /* ...existing code... */
+    .hero-effects {
+        /* Add more shapes and effects for desktop */
+    }
+    .shape-1 {
+        width: 140px;
+        height: 140px;
+        top: 10%;
+        left: 5%;
+        border-width: 3px;
+    }
+    .shape-2 {
+        width: 180px;
+        height: 180px;
+        bottom: 10%;
+        right: 10%;
+        border-width: 3px;
+    }
+    .shape-3 {
+        position: absolute;
+        top: 60%;
+        left: 20%;
+        width: 100px;
+        height: 100px;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        border: 2px solid var(--accent-end);
+        opacity: 0.5;
+        animation: spin 25s linear infinite;
+        z-index: 2;
+    }
+    .shape-4 {
+        position: absolute;
+        top: 30%;
+        right: 25%;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px dashed var(--accent-start);
+        opacity: 0.4;
+        animation: spin 40s linear infinite reverse;
+        z-index: 2;
+    }
+    .neon-line {
+        width: 180%;
+        left: -40%;
+        height: 120px;
+        bottom: 5%;
+        opacity: 0.4;
+    }
+    .hero-overlay {
+        background: radial-gradient(circle at 60% 40%, rgba(11,11,13,0.4) 0%, rgba(0,0,0,1) 90%);
+    }
+}
 /* --- CORE VARIABLES --- */
 :root {
     --bg-color: #0B0B0D;
@@ -389,6 +531,120 @@ header {
     }
     .unit {
         font-size: 0.6rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        justify-content: stretch;
+        font-size: 20px;
+    }
+    #app {
+        max-width: 1400px;
+        min-height: 100vh;
+        margin: 2rem auto;
+        border-radius: 24px;
+        box-shadow: 0 0 80px 0 rgba(109, 40, 217, 0.18);
+        border-left: none;
+        border-right: none;
+    }
+    header {
+        min-height: 70vh;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        gap: 3rem;
+    }
+    .hero-collage {
+        width: 50%;
+        min-height: 500px;
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+    .hero-content {
+        width: 50%;
+        margin: 0;
+        padding-left: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .hero-title {
+        font-size: 6rem;
+        text-align: left;
+        margin-bottom: 1.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+    .logo-wrap {
+        width: 180px;
+        height: 180px;
+        margin: 0 0 2rem 0;
+    }
+    .hero-logo {
+        width: 180px;
+        height: 180px;
+    }
+    .police-tape {
+        height: 60px;
+        font-size: 2rem;
+        left: 0;
+        width: 100%;
+        top: 10%;
+        transform: rotate(-3deg);
+    }
+    .tape-text {
+        font-size: 1.5rem;
+    }
+    section, footer {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+    .about-text {
+        font-size: 1.5rem;
+    }
+    .masonry-grid {
+        column-count: 4;
+        column-gap: 30px;
+    }
+    .stat-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .sheet {
+        max-width: 700px;
+    }
+    #modal {
+        align-items: center;
+    }
+    .sponsors-marquee {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1100px;
+    }
+    .filter-scroller {
+        justify-content: center;
+        margin: 0 0 1.5rem 0;
+        padding-left: 0;
+    }
+    .filter-btn {
+        font-size: 1.2rem;
+        padding: 0.9rem 2.5rem;
+    }
+    .about-srishti {
+        font-size: 1.3rem;
+    }
+    footer {
+        padding-left: 8rem;
+        padding-right: 8rem;
     }
 }
 

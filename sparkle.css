@@ -1,0 +1,70 @@
+.sparkle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    animation: sparkle-animation 2s infinite;
+}
+
+@keyframes sparkle-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+#sparkle-1 { top: 18%; left: 10%; animation-delay: 0.3s; }
+#sparkle-2 { top: 25%; left: 81%; animation-delay: 1.1s; }
+#sparkle-3 { top: 92%; left: 63%; animation-delay: 0.7s; }
+#sparkle-4 { top: 46%; left: 88%; animation-delay: 0.1s; }
+#sparkle-5 { top: 88%; left: 78%; animation-delay: 1.8s; }
+#sparkle-6 { top: 72%; left: 9%; animation-delay: 0.2s; }
+#sparkle-7 { top: 32%; left: 4%; animation-delay: 1.4s; }
+#sparkle-8 { top: 57%; left: 52%; animation-delay: 1.9s; }
+#sparkle-9 { top: 38%; left: 47%; animation-delay: 0.8s; }
+#sparkle-10 { top: 14%; left: 14%; animation-delay: 1.2s; }
+#sparkle-11 { top: 8%; left: 84%; animation-delay: 0.6s; }
+#sparkle-12 { top: 42%; left: 91%; animation-delay: 1.3s; }
+#sparkle-13 { top: 67%; left: 16%; animation-delay: 0.4s; }
+#sparkle-14 { top: 95%; left: 24%; animation-delay: 1.7s; }
+#sparkle-15 { top: 51%; left: 33%; animation-delay: 0.9s; }
+#sparkle-16 { top: 23%; left: 38%; animation-delay: 1.6s; }
+#sparkle-17 { top: 79%; left: 42%; animation-delay: 0s; }
+#sparkle-18 { top: 61%; left: 77%; animation-delay: 1s; }
+#sparkle-19 { top: 3%; left: 22%; animation-delay: 0.5s; }
+#sparkle-20 { top: 55%; left: 2%; animation-delay: 1.5s; }
+#sparkle-21 { top: 18%; left: 96%; animation-delay: 0.3s; }
+#sparkle-22 { top: 82%; left: 30%; animation-delay: 1.1s; }
+#sparkle-23 { top: 12%; left: 71%; animation-delay: 0.7s; }
+#sparkle-24 { top: 69%; left: 59%; animation-delay: 0.1s; }
+#sparkle-25 { top: 4%; left: 44%; animation-delay: 1.8s; }
+#sparkle-26 { top: 98%; left: 11%; animation-delay: 0.2s; }
+#sparkle-27 { top: 27%; left: 66%; animation-delay: 1.4s; }
+#sparkle-28 { top: 53%; left: 86%; animation-delay: 1.9s; }
+#sparkle-29 { top: 86%; left: 3%; animation-delay: 0.8s; }
+#sparkle-30 { top: 43%; left: 28%; animation-delay: 1.2s; }
+#sparkle-31 { top: 2%; left: 57%; animation-delay: 0.6s; }
+#sparkle-32 { top: 76%; left: 73%; animation-delay: 1.3s; }
+#sparkle-33 { top: 91%; left: 49%; animation-delay: 0.4s; }
+#sparkle-34 { top: 36%; left: 19%; animation-delay: 1.7s; }
+#sparkle-35 { top: 64%; left: 83%; animation-delay: 0.9s; }
+#sparkle-36 { top: 11%; left: 35%; animation-delay: 1.6s; }
+#sparkle-37 { top: 84%; left: 55%; animation-delay: 0s; }
+#sparkle-38 { top: 48%; left: 89%; animation-delay: 1s; }
+#sparkle-39 { top: 22%; left: 8%; animation-delay: 0.5s; }
+#sparkle-40 { top: 73%; left: 21%; animation-delay: 1.5s; }
+#sparkle-41 { top: 33%; left: 93%; animation-delay: 0.3s; }
+#sparkle-42 { top: 9%; left: 26%; animation-delay: 1.1s; }
+#sparkle-43 { top: 60%; left: 69%; animation-delay: 0.7s; }
+#sparkle-44 { top: 81%; left: 41%; animation-delay: 0.1s; }
+#sparkle-45 { top: 29%; left: 13%; animation-delay: 1.8s; }
+#sparkle-46 { top: 94%; left: 92%; animation-delay: 0.2s; }
+#sparkle-47 { top: 58%; left: 36%; animation-delay: 1.4s; }
+#sparkle-48 { top: 16%; left: 6%; animation-delay: 1.9s; }
+#sparkle-49 { top: 89%; left: 68%; animation-delay: 0.8s; }
+#sparkle-50 { top: 47%; left: 56%; animation-delay: 1.2s; }

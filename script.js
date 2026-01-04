@@ -26,37 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- SPARKLE GENERATOR (NEW) ---
-function createSparkles() {
-    const container = document.getElementById('sparkles');
-    const count = 100; // Number of stars
-
-    for (let i = 0; i < count; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        
-        // Random position
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        
-        // Random size
-        const size = Math.random() * 3 + 1; // 1px to 4px
-        
-        // Random animation delay
-        const delay = Math.random() * 2;
-        const duration = Math.random() * 2 + 1; // 1s to 3s
-
-        sparkle.style.left = x + '%';
-        sparkle.style.top = y + '%';
-        sparkle.style.width = size + 'px';
-        sparkle.style.height = size + 'px';
-        sparkle.style.animationDelay = delay + 's';
-        sparkle.style.setProperty('--duration', duration + 's');
-        
-        container.appendChild(sparkle);
-    }
-}
-
 // --- DATA STORE ---
 let eventsData = [];
 let schedule = {};
@@ -65,7 +34,6 @@ let schedule = {};
 async function fetchData() {
     try {
         // Initialize visual effects immediately
-        createSparkles();
 
         // Fetch both data sources in parallel
         const eventsResponse = await fetch("data/events.json");

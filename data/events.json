@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Hack the Horizon",
+    "category": "Technical",
+    "tagline": "Build. Break. Innovate.",
+    "description": "A 24-hour hackathon focused on solving real-world problems using technology. Teams will ideate, build, and present functional prototypes.",
+    "fee": "₹200",
+    "team": "2–4",
+    "prize": "₹15,000",
+    "day": "Day 1",
+    "time": "10:00 AM",
+    "image": "assets/events/hackathon.png"
+  },
+  {
+    "title": "CodeSprint",
+    "category": "Technical",
+    "tagline": "Think fast. Code faster.",
+    "description": "An intense competitive programming contest testing logic, speed, and accuracy across multiple problem sets.",
+    "fee": "₹100",
+    "team": "Solo",
+    "prize": "₹8,000",
+    "day": "Day 1",
+    "time": "2:00 PM",
+    "image": "assets/events/codesprint.png"
+  },
+  {
+    "title": "Robo Rumble",
+    "category": "Games",
+    "tagline": "Machines collide.",
+    "description": "A robotics-based battle event where custom-built bots compete in an arena of challenges and obstacles.",
+    "fee": "₹300",
+    "team": "3–5",
+    "prize": "₹12,000",
+    "day": "Day 2",
+    "time": "11:00 AM",
+    "image": "assets/events/roborumble.png"
+  },
+  {
+    "title": "Pixel Perfect",
+    "category": "Cultural",
+    "tagline": "Design meets imagination.",
+    "description": "A digital design competition focused on creativity, UI/UX sense, and visual storytelling.",
+    "fee": "₹150",
+    "team": "Solo",
+    "prize": "₹6,000",
+    "day": "Day 2",
+    "time": "1:00 PM",
+    "image": "assets/events/pixelperfect.png"
+  },
+  {
+    "title": "Tech Talk Series",
+    "category": "Workshop",
+    "tagline": "Insights from industry.",
+    "description": "Expert-led sessions on emerging technologies, career paths, and real-world engineering practices.",
+    "fee": "Free",
+    "team": "Individual",
+    "prize": "Certificates",
+    "day": "Day 1",
+    "time": "4:00 PM",
+    "image": "assets/events/techtalk.png"
+  }
+]

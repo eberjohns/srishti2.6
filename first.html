@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRISHTI 2.6 - Mobile-First Techno Cultural Fest</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 5. GLOBAL LAYOUT RULES [cite: 55] --- */
+        :root {
+            --bg-color: #0B0B0D; /* [cite: 66] */
+            --text-primary: #FFFFFF; /* [cite: 67] */
+            --text-muted: #9CA3AF; /* [cite: 68] */
+            --accent-start: #6D28D9; /* [cite: 69] */
+            --accent-end: #9333EA;
+            --border-color: rgba(255, 255, 255, 0.08); /* [cite: 70] */
+            --font-primary: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --container-width: 420px; /*  */
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            font-size: 16px; /* [cite: 63] */
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Mobile Container [cite: 56] */
+        #app {
+            width: 100%;
+            max-width: var(--container-width);
+            background: var(--bg-color);
+            position: relative;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        /* Grain Overlay & Grid  */
+        #app::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
+            linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Typography Utilities */
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; }
+        .mono { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); }
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent-start), var(--accent-end));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* --- 6.1 LOADER [cite: 72] --- */
+        #loader {
+            position: fixed; inset: 0; z-index: 999;
+            background: var(--bg-color);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            transition: opacity 0.6s ease;
+        }
+        .loader-line {
+            width: 0%; height: 2px;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            margin-top: 20px;
+            animation: loadLine 0.6s forwards; /* [cite: 78] */
+        }
+        @keyframes loadLine { to { width: 100px; } }
+
+        /* --- 6.2 HERO SECTION [cite: 80] --- */
+        header {
+            padding: 4rem 1.5rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-logo {
+            width: 80px; height: 80px;
+            margin-bottom: 1.5rem;
+            animation: breathe 6s ease-in-out infinite; /* [cite: 95] */
+        }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.05); opacity: 1; } }
+        
+        .hero-title { font-size: 2.5rem; line-height: 1; margin-bottom: 0.5rem; animation: reveal 0.8s ease-out; }
+        .hero-subtitle { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+        
+        /* Countdown [cite: 87] */
+        .countdown { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; font-family: var(--font-mono); }
+        .timer-block { text-align: center; }
+        .timer-val { font-size: 1.5rem; font-weight: 700; display: block; }
+        .timer-label { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* Primary CTA [cite: 89, 98] */
+        .btn {
+            background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+            color: white; border: none;
+            padding: 1rem 2rem; font-weight: 600; font-size: 1rem;
+            border-radius: 8px; cursor: pointer;
+            width: 100%; display: block; text-align: center; text-decoration: none;
+            transition: transform 0.1s;
+        }
+        .btn:active { transform: scale(0.96); }
+
+        /* --- 6.4 EVENTS SECTION [cite: 109] --- */
+        section { padding: 3rem 1.5rem; border-top: 1px solid var(--border-color); position: relative; z-index: 1; }
+        
+        /* Sticky Filter [cite: 111] */
+        .filter-bar {
+            display: flex; gap: 1rem; overflow-x: auto;
+            padding-bottom: 1rem; margin-bottom: 1.5rem;
+            position: sticky; top: 0; background: rgba(11, 11, 13, 0.95);
+            backdrop-filter: blur(5px); z-index: 10;
+            scrollbar-width: none;
+        }
+        .filter-chip {
+            white-space: nowrap; padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color); border-radius: 20px;
+            font-size: 0.9rem; color: var(--text-muted);
+            transition: all 0.2s;
+        }
+        .filter-chip.active {
+            background: white; color: black; border-color: white;
+        }
+
+        /* Event Card [cite: 117] */
+        .event-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            padding: 1rem; margin-bottom: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .event-card:active { background: rgba(255,255,255,0.06); }
+        .card-cat { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-end); margin-bottom: 0.5rem; display: block; }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .card-tagline { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- 6.5 SCHEDULE [cite: 136] --- */
+        .schedule-toggle {
+            display: flex; border: 1px solid var(--border-color);
+            border-radius: 8px; overflow: hidden; margin-bottom: 2rem;
+        }
+        .day-btn {
+            flex: 1; padding: 0.75rem; text-align: center;
+            background: transparent; color: var(--text-muted); border: none;
+        }
+        .day-btn.active { background: rgba(255,255,255,0.1); color: white; }
+
+        .timeline-item {
+            padding-left: 1rem; border-left: 2px solid var(--border-color);
+            padding-bottom: 2rem; position: relative;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -5px; top: 0;
+            width: 8px; height: 8px; background: var(--accent-start); border-radius: 50%;
+        }
+        .time { font-family: var(--font-mono); color: var(--accent-end); margin-bottom: 0.25rem; display: block;}
+
+        /* --- FOOTER [cite: 195] --- */
+        footer { padding: 4rem 1.5rem; text-align: center; border-top: 1px solid var(--border-color); }
+        .footer-cta { margin-bottom: 2rem; }
+
+        /* --- BOTTOM SHEET (Modal) [cite: 123] --- */
+        #modal {
+            position: fixed; inset: 0; z-index: 1000;
+            background: rgba(0,0,0,0.8);
+            display: flex; align-items: flex-end;
+            visibility: hidden; opacity: 0; transition: all 0.3s;
+        }
+        #modal.open { visibility: visible; opacity: 1; }
+        
+        .sheet {
+            background: #151518; width: 100%; max-width: 420px;
+            border-radius: 20px 20px 0 0; padding: 2rem;
+            transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            max-height: 90vh; overflow-y: auto; margin: 0 auto;
+        }
+        #modal.open .sheet { transform: translateY(0); }
+        
+        .close-bar {
+            width: 40px; height: 4px; background: var(--text-muted);
+            border-radius: 2px; margin: 0 auto 1.5rem; opacity: 0.5;
+        }
+
+        /* --- UTILS --- */
+        .hidden { display: none !important; }
+
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <img src="logo.png" alt="Srishti Logo" width="60" style="filter: grayscale(1);">
+        <div class="loader-line"></div>
+    </div>
+
+    <div id="app">
+        
+        <header>
+            <img src="logo.png" alt="Srishti Logo" class="hero-logo">
+            <h1 class="hero-title gradient-text">SRISHTI 2.6</h1>
+            <p class="hero-subtitle">Techno Cultural Fest</p>
+            
+            <div class="countdown">
+                <div class="timer-block"><span class="timer-val" id="d">00</span><span class="timer-label">DAYS</span></div>
+                <div class="timer-block"><span class="timer-val" id="h">00</span><span class="timer-label">HRS</span></div>
+                <div class="timer-block"><span class="timer-val" id="m">00</span><span class="timer-label">MIN</span></div>
+            </div>
+
+            <p class="mono" style="margin-bottom: 1.5rem;">March 15, 2026 • CS Dept.</p>
+            <a href="#" class="btn">Register Now</a>
+        </header>
+
+        <section>
+            <p style="font-size: 1.25rem; line-height: 1.6;">
+                Engineered for the curious. <br>
+                <span class="gradient-text">Zero gimmicks. Pure talent.</span>
+            </p>
+        </section>
+
+        <section id="events">
+            <h2 style="margin-bottom: 1.5rem;">Events</h2>
+            
+            <div class="filter-bar">
+                <div class="filter-chip active" onclick="filterEvents('all', this)">All</div>
+                <div class="filter-chip" onclick="filterEvents('technical', this)">Technical</div>
+                <div class="filter-chip" onclick="filterEvents('cultural', this)">Cultural</div>
+                <div class="filter-chip" onclick="filterEvents('games', this)">Games</div>
+            </div>
+
+            <div id="event-list">
+                </div>
+        </section>
+
+        <section id="schedule">
+            <h2 style="margin-bottom: 1.5rem;">Schedule</h2>
+            <div class="schedule-toggle">
+                <button class="day-btn active" onclick="switchDay(1)">Day 1</button>
+                <button class="day-btn" onclick="switchDay(2)">Day 2</button>
+            </div>
+            
+            <div id="timeline">
+                </div>
+        </section>
+
+        <section>
+            <h2 style="margin-bottom: 1.5rem;">Contact</h2>
+            <div style="display: grid; gap: 1rem;">
+                <div>
+                    <span class="mono">GENERAL ENQUIRY</span>
+                    <p>+91 98765 43210</p>
+                </div>
+                <div>
+                    <span class="mono">EMAIL</span>
+                    <p>contact@srishti26.com</p>
+                </div>
+                <div>
+                    <span class="mono">VENUE</span>
+                    <p>CS Department Block, Main Campus</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-cta">
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Ready to compete?</p>
+                <a href="#" class="btn">Register for Fest</a>
+            </div>
+            <p class="mono">© 2026 Dept. of Computer Science</p>
+        </footer>
+
+    </div>
+
+    <div id="modal" onclick="closeModal(event)">
+        <div class="sheet">
+            <div class="close-bar"></div>
+            <span class="mono" id="modal-cat" style="color: var(--accent-end);">CATEGORY</span>
+            <h2 id="modal-title" style="font-size: 2rem; margin: 0.5rem 0 1rem;">Event Name</h2>
+            <p id="modal-desc" style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;">
+                Description goes here.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                <div><span class="mono">ENTRY FEE</span><p id="modal-fee">₹0</p></div>
+                <div><span class="mono">PRIZE POOL</span><p id="modal-prize">₹0</p></div>
+            </div>
+
+            <a href="#" class="btn">Register for Event</a>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA (Placeholders based on SRS) ---
+        const events = [
+            { id: 1, name: "Hackathon", cat: "technical", desc: "24-hour coding marathon.", fee: "₹200", prize: "₹10,000" },
+            { id: 2, name: "Code Relay", cat: "technical", desc: "Team coding with a twist.", fee: "₹100", prize: "₹3,000" },
+            { id: 3, name: "Battle of Bands", cat: "cultural", desc: "Musical showdown.", fee: "₹500", prize: "₹15,000" },
+            { id: 4, name: "Valorant", cat: "games", desc: "5v5 Tactical Shooter.", fee: "₹300", prize: "₹5,000" },
+        ];
+
+        const schedule = {
+            1: [
+                { time: "09:00 AM", name: "Inauguration", cat: "General" },
+                { time: "11:00 AM", name: "Hackathon Starts", cat: "Technical" }
+            ],
+            2: [
+                { time: "10:00 AM", name: "Gaming Finals", cat: "Games" },
+                { time: "04:00 PM", name: "Closing Ceremony", cat: "General" }
+            ]
+        };
+
+        // --- LOADER LOGIC [cite: 79] ---
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => document.getElementById('loader').remove(), 600);
+            }, 800);
+            renderEvents('all');
+            renderSchedule(1);
+            startTimer();
+        });
+
+        // --- EVENTS LOGIC [cite: 109] ---
+        function renderEvents(filter) {
+            const container = document.getElementById('event-list');
+            container.innerHTML = '';
+            
+            const filtered = filter === 'all' ? events : events.filter(e => e.cat === filter);
+            
+            filtered.forEach(e => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.onclick = () => openModal(e);
+                card.innerHTML = `
+                    <span class="card-cat mono">${e.cat}</span>
+                    <h3 class="card-title">${e.name}</h3>
+                    <p class="card-tagline">${e.desc}</p>
+                    <p class="mono" style="margin-top:0.5rem">View Details →</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterEvents(cat, btn) {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            renderEvents(cat);
+        }
+
+        // --- MODAL LOGIC [cite: 134] ---
+        function openModal(event) {
+            document.getElementById('modal-title').innerText = event.name;
+            document.getElementById('modal-cat').innerText = event.cat.toUpperCase();
+            document.getElementById('modal-desc').innerText = event.desc + " Extended details would appear here in the final version.";
+            document.getElementById('modal-fee').innerText = event.fee;
+            document.getElementById('modal-prize').innerText = event.prize;
+            
+            document.getElementById('modal').classList.add('open');
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'modal' || e.target.classList.contains('close-bar')) {
+                document.getElementById('modal').classList.remove('open');
+            }
+        }
+
+        // --- SCHEDULE LOGIC [cite: 145] ---
+        function renderSchedule(day) {
+            const container = document.getElementById('timeline');
+            container.innerHTML = '';
+            schedule[day].forEach(s => {
+                container.innerHTML += `
+                    <div class="timeline-item">
+                        <span class="time mono">${s.time}</span>
+                        <h4>${s.name}</h4>
+                        <span class="mono" style="font-size: 0.75rem">${s.cat}</span>
+                    </div>
+                `;
+            });
+        }
+
+        function switchDay(day) {
+            document.querySelectorAll('.day-btn').forEach((b, i) => {
+                if(i + 1 === day) b.classList.add('active');
+                else b.classList.remove('active');
+            });
+            renderSchedule(day);
+        }
+
+        // --- TIMER LOGIC [cite: 97] ---
+        function startTimer() {
+            // Set date to March 15, 2026
+            const dest = new Date("Mar 15, 2026 09:00:00").getTime();
+            
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = dest - now;
+                
+                if(diff > 0) {
+                    document.getElementById("d").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById("h").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById("m").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

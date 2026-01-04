@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRISHTI 2.6 - Mobile-First Techno Cultural Fest</title>
+    <title>SRISHTI 2.6</title>
+    <link rel="icon" type="image/png" href="./logo.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
 
     <style>
         /* --- CORE VARIABLES --- */
@@ -248,8 +250,10 @@
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
         .hero-title {
-            font-size: 3.5rem; line-height: 0.9; margin-bottom: 0.5rem;
-            text-transform: uppercase; font-family: var(--font-mono);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 4rem;
+            text-transform: uppercase;line-height: 0.9; margin-bottom: 0.5rem;
             position: relative;
             text-shadow: 0 0 30px rgba(147, 51, 234, 0.3);
         }
@@ -657,7 +661,7 @@
         // --- SPARKLE GENERATOR (NEW) ---
         function createSparkles() {
             const container = document.getElementById('sparkles');
-            const count = 50; // Number of stars
+            const count = 100; // Number of stars
 
             for (let i = 0; i < count; i++) {
                 const sparkle = document.createElement('div');

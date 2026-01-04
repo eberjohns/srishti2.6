@@ -147,6 +147,7 @@ function renderEvents(filter) {
                 <span class="tag">${e.category}</span>
                 <h3>${e.title}</h3>
                 <p class="mono" style="margin-top: 0.5rem; opacity: 0.7;">${e.fee} • Win ${e.prize}</p>
+                <p class="mono" style="margin-top: 1rem; opacity: 0.9; text-decoration: underline;">Show more</p>
             </div>
         `;
         list.appendChild(card);
@@ -161,6 +162,7 @@ function filterEvents(cat, btn) {
 
 // --- MODAL LOGIC ---
 const modal = document.getElementById('modal');
+const retroSwitch = document.querySelector('.switch-plate');
 function openModal(e) {
     document.getElementById('modal-img').src = e.image;
     document.getElementById('modal-cat').innerText = e.category;
@@ -169,9 +171,13 @@ function openModal(e) {
     document.getElementById('modal-fee').innerText = e.fee;
     document.getElementById('modal-prize').innerText = e.prize;
     modal.classList.add('active');
+    retroSwitch.style.display = 'none';
 }
 function closeModal(e) {
-    if (e.target.id === 'modal') modal.classList.remove('active');
+    if (e.target.id === 'modal'){
+        modal.classList.remove('active');
+        retroSwitch.style.display = 'flex';
+    }
 }
 
 // --- COUNTDOWN TIMER ---

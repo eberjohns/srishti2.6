@@ -1,4 +1,0 @@
-make the events section like the one given in a previous prompt
-change content
-make responsive
-deploy

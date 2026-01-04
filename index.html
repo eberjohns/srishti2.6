@@ -178,6 +178,7 @@
             overflow: hidden;
             pointer-events: none;
             backdrop-filter: blur(2px);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
         .tape-text {
             white-space: nowrap;
@@ -187,6 +188,7 @@
             color: rgba(255,255,255,0.4);
             letter-spacing: 4px;
             animation: tapeScroll 10s linear infinite;
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
         }
         @keyframes tapeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -275,7 +277,7 @@
             background: #1a1a1d; /* Dark grey, old computer color */
             border: 2px solid #4e4e50; /* Darker grey border */
             border-radius: 12px;
-            padding: 20px;
+            padding: 35px 20px;
             margin: 0 auto 2rem;
             box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 0 2px 2px rgba(0,0,0,0.3);
             position: relative;
@@ -365,6 +367,28 @@
         @keyframes light-bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 360px) {
+            #countdown-housing {
+                padding: 20px 15px;
+                margin: 0 1rem 2rem; /* Add some margin on sides */
+            }
+            #countdown {
+                gap: 5px;
+            }
+            .segment {
+                min-width: 0; /* Let it shrink */
+                flex: 1; /* Distribute space evenly */
+                padding: 8px 4px;
+            }
+            .digits {
+                font-size: 1.2rem;
+            }
+            .unit {
+                font-size: 0.6rem;
+            }
         }
 
         /* --- REMAINING SECTIONS (Unchanged) --- */

@@ -1,7 +1,4 @@
-add twinking effect
-make the srishti 2.6 text more stylistic
 make the events section like the one given in a previous prompt
-add nitto sponsor and get your photos section
 change content
 make responsive
 deploy

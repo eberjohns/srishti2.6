@@ -1,16 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const switchInput = document.getElementById('retro-switch');
 
-    function handleSwitchChange(event) {
-        if (event.target.checked) {
-            alert('Registration Initialized!');
-            // Or, redirect to a registration page:
-            // window.location.href = 'registration.html';
+    // Configuration: Change this URL to your actual registration form
+    const REGISTRATION_URL = "#"; 
+
+    function handleRegistration() {
+        // 1. Optional: Add a small delay if you want them to see the green flash
+        //    (Remove setTimeout if you want instant redirect)
+        setTimeout(() => {
+            window.location.href = REGISTRATION_URL;
+        }, 150); // 150ms delay for the visual "click" to register in the brain
+
+        // 2. Reset the switch immediately so it's not 'checked' if they come back
+        if(switchInput) {
+            switchInput.checked = false;
         }
     }
 
     if(switchInput) {
-        switchInput.addEventListener('change', handleSwitchChange);
+        switchInput.addEventListener('change', (e) => {
+            if(e.target.checked) {
+                handleRegistration();
+            }
+        });
     }
 });
 
@@ -56,17 +68,21 @@ async function fetchData() {
         createSparkles();
 
         // Fetch both data sources in parallel
-        const [eventsResponse, scheduleResponse] = await Promise.all([
-            fetch("data/events.json"),
-            fetch("data/schedule.json")
-        ]);
+        const eventsResponse = await fetch("data/events.json");
 
-        if (!eventsResponse.ok || !scheduleResponse.ok) {
+        if (!eventsResponse.ok) {
             throw new Error(`HTTP error!`);
         }
 
         eventsData = await eventsResponse.json();
-        schedule = await scheduleResponse.json();
+        schedule = eventsData.reduce((acc, event) => {
+            const day = event.day;
+            if (!acc[day]) {
+                acc[day] = [];
+            }
+            acc[day].push(event);
+            return acc;
+        }, {});
         
         renderEvents('all');
         switchDay(1); 
@@ -91,8 +107,8 @@ function renderSchedule(day) {
         container.innerHTML += `
             <div class="timeline-item">
                 <span class="time">${s.time}</span>
-                <h4>${s.name}</h4>
-                <span class="timeline-cat mono">${s.cat}</span>
+                <h4>${s.title}</h4>
+                <span class="timeline-cat mono">${s.category}</span>
             </div>
         `;
     });
@@ -102,7 +118,7 @@ function switchDay(day) {
     document.querySelectorAll('.day-btn').forEach((btn, i) => {
         btn.classList.toggle('active', i + 1 === day);
     });
-    renderSchedule(day);
+    renderSchedule(`Day ${day}`);
 }
 
 // --- RENDER LOGIC ---

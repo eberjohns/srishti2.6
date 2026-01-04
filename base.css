@@ -354,6 +354,17 @@ header {
     animation-play-state: paused;
 }
 
+.footer-social-link {
+    color: var(--text-muted);
+    margin: 0 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-social-link:hover {
+    color: var(--text-primary);
+}
+
 @keyframes light-bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }

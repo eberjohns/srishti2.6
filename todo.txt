@@ -1,6 +1,5 @@
 add twinking effect
 make the srishti 2.6 text more stylistic
-make the registeration button more retro button like
 make the events section like the one given in a previous prompt
 add nitto sponsor and get your photos section
 take schedule from events.json

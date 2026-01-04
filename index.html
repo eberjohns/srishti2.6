@@ -75,15 +75,41 @@
 
         /* 1. BACKGROUND COLLAGE LAYER */
         .hero-collage {
-            position: absolute; inset: 0; z-index: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
-            opacity: 0.4;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            opacity: 0.7; /* A bit more visible */
+        }
+
+        .collage-item {
+            position: absolute;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 0 25px rgba(0,0,0,0.7);
+        }
+        
+        .collage-img { 
+            width: 100%; height: 100%; object-fit: cover; 
             filter: grayscale(100%) contrast(1.2);
             mix-blend-mode: luminosity;
+            opacity: 0.5;
+            transition: transform 0.4s ease;
         }
-        .collage-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+
+        .collage-item:hover .collage-img {
+            transform: scale(1.1);
+        }
+
+        /* For color splashes */
+        .collage-item.color-splash {
+            border-color: var(--accent-end);
+        }
+        .collage-item.color-splash .collage-img {
+            filter: none;
+            mix-blend-mode: normal;
+            opacity: 0.7;
+        }
         
         /* 2. OVERLAYS & GRAIN */
         .hero-overlay {
@@ -97,6 +123,48 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
+        /* 3. HERO EFFECTS & SHAPES */
+        .hero-effects {
+            position: absolute;
+            inset: 0;
+            z-index: 2; /* Above collage, below tape */
+            pointer-events: none;
+        }
+        .shape {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .shape-1 {
+            top: 15%; left: 10%;
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            border-style: dashed;
+            animation: spin 30s linear infinite;
+        }
+        .shape-2 {
+            bottom: 20%; right: 15%;
+            width: 120px; height: 120px;
+            border-right: none;
+            border-bottom: none;
+            border-top-color: var(--accent-end);
+            animation: spin 20s linear infinite reverse;
+        }
+        .neon-line {
+            position: absolute;
+            bottom: 10%;
+            left: -10%;
+            width: 120%;
+            height: 80px;
+            background: linear-gradient(var(--accent-start), transparent);
+            filter: blur(10px);
+            opacity: 0.3;
+        }
+
+        @keyframes spin { 
+            from { transform: rotate(0deg); } 
+            to { transform: rotate(360deg); } 
+        }
+
         /* 3. POLICE TAPE BANNER */
         .police-tape {
             position: absolute;
@@ -104,7 +172,7 @@
             background: rgba(147, 51, 234, 0.15); /* Faded Purple */
             border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2);
-            z-index: 2;
+            z-index: 3;
             transform: rotate(-15deg);
             display: flex; align-items: center;
             overflow: hidden;
@@ -389,12 +457,27 @@
     <div id="app">
         <header>
             <div class="hero-collage">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=60" class="collage-img">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=60" class="collage-img">
-                <img src="https://images.unsplash.com/photo-1531297461136-82lw3f2109c8?w=500&q=60" class="collage-img">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=60" class="collage-img">
-                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&q=60" class="collage-img">
-                <img src="https://images.unsplash.com/photo-1504384308090-c54be3855833?w=500&q=60" class="collage-img">
+                <div class="collage-item" style="top: 2%; left: 5%; width: 40%; height: 25%; transform: rotate(-8deg);">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=60" class="collage-img">
+                </div>
+                <div class="collage-item color-splash" style="top: 15%; left: 55%; width: 40%; height: 35%; transform: rotate(5deg);">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=60" class="collage-img">
+                </div>
+                <div class="collage-item" style="top: 30%; left: -5%; width: 50%; height: 30%; transform: rotate(10deg);">
+                    <img src="https://images.unsplash.com/photo-1531297461136-82lw3f2109c8?w=500&q=60" class="collage-img">
+                </div>
+                <div class="collage-item" style="top: 55%; left: 40%; width: 55%; height: 40%; transform: rotate(-4deg);">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=60" class="collage-img">
+                </div>
+                 <div class="collage-item color-splash" style="top: 65%; left: 5%; width: 30%; height: 30%; transform: rotate(6deg);">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&q=60" class="collage-img">
+                </div>
+            </div>
+            
+            <div class="hero-effects">
+                <div class="shape shape-1"></div>
+                <div class="neon-line"></div>
+                <div class="shape shape-2"></div>
             </div>
 
             <div class="hero-overlay"></div>

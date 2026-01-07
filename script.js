@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const switchInput = document.getElementById('retro-switch');
 
     // Configuration: Change this URL to your actual registration form
-    const REGISTRATION_URL = "#"; 
+    const REGISTRATION_URL = "https://forms.gle/JSF2Qh9NZLjEanEK7"; 
 
     function handleRegistration() {
         // 1. Optional: Add a small delay if you want them to see the green flash

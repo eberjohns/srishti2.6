@@ -1,6 +1,6 @@
 [
   {
-    "title": "CodeX",
+    "title": "CodeX (Coding)",
     "category": "Technical",
     "tagline": "Think fast. Code faster.",
     "description": "The ultimate test of logic and syntax. Can you code under pressure before the time runs out?",
@@ -12,7 +12,7 @@
     "image": "assets/events/codeX.jpg"
   },
   {
-    "title": "Inquisitive",
+    "title": "Inquisitive (Quiz)",
     "category": "Technical",
     "tagline": "Where brains duel.",
     "description": "A battle of wits. How well do you know the world of tech and beyond?",
@@ -24,7 +24,7 @@
     "image": "assets/events/inquisitive.jpg"
   },
   {
-    "title": "Heist & Seek",
+    "title": "Heist & Seek (Treasure Hunt)",
     "category": "Games",
     "tagline": "Where is the GOLD?",
     "description": "Decrypt the clues, navigate the campus, and find the loot.",
@@ -36,7 +36,7 @@
     "image": "assets/events/heist_seek.jpg"
   },
   {
-    "title": "Bug smash",
+    "title": "Bug smash (Debugging)",
     "category": "Technical",
     "tagline": "Culprit in code.",
     "description": "The system is broken. Find the error, fix the glitch, and save the code.",
@@ -48,7 +48,7 @@
     "image": "assets/events/bug_smash.jpg"
   },
   {
-    "title": "TraceBot",
+    "title": "TraceBot (Line following Robot)",
     "category": "Technical",
     "tagline": "Race decides the winner.",
     "description": "Hardware meets logic. Guide your bot through the track with precision.",
@@ -60,7 +60,7 @@
     "image": "assets/events/tracebot.jpg"
   },
   {
-    "title": "MindScape",
+    "title": "MindScape (Mind Game)",
     "category": "Games",
     "tagline": "Is your MIND strong?",
     "description": "Test your RAM. A challenge of focus, memory, and cognitive speed.",
@@ -72,7 +72,7 @@
     "image": "assets/events/mindscape.jpg"
   },
   {
-    "title": "Siteforge",
+    "title": "Siteforge (Website Development)",
     "category": "Technical",
     "tagline": "Build your Web.",
     "description": "Front-end mastery. Build the most aesthetic and functional interface.",
@@ -84,7 +84,7 @@
     "image": "assets/events/siteforge.jpg"
   },
   {
-    "title": "Ardentis",
+    "title": "Ardentis (Ideathon)",
     "category": "Technical",
     "tagline": "Pitch your Idea.",
     "description": "Have a billion-dollar idea? Pitch your innovation to the panel.",
@@ -96,7 +96,7 @@
     "image": "assets/events/ardentis.jpg" 
   },
   {
-    "title": "Waltz",
+    "title": "Waltz (Group Dance competition)",
     "category": "Cultural",
     "tagline": "Dance it out.",
     "description": "Sync your steps. The stage is yours to set on fire.",

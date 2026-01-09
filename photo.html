@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS Variables to match your Shadcn/UI theme */
+        :root {
+            --primary: 262.1 83.3% 57.8%;
+            --accent: 263.4 70% 50.4%;
+            --card: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+        }
+
+        .photo-card {
+            position: absolute;
+            width: 18rem;
+            aspect-ratio: 4 / 3;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 4px solid hsl(var(--card));
+            box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.2);
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+            opacity: 0;
+        }
+
+        .photo-card.spread {
+            opacity: 1;
+        }
+
+        /* Logic for spreading images */
+        .photo-card.spread:nth-child(1) {
+            transform: translate(-90%, -80%) rotate(-15deg);
+        }
+
+        .photo-card.spread:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(5deg) scale(1.05);
+            z-index: 1;
+        }
+
+        .photo-card.spread:nth-child(3) {
+            transform: translate(-10%, -20%) rotate(15deg);
+        }
+
+        @media (max-width: 768px) {
+            .photo-card { width: 16rem; }
+        }
+
+        @media (max-width: 640px) {
+            .photo-card { width: 12rem; }
+        }
+
+        /* Utility for the gradient text */
+        .text-gradient {
+            background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <section id="photos" class="py-24 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                
+                <div id="photo-gallery-container" class="relative h-80 md:h-96">
+                    <div class="photo-card">
+                        <img src="/images/2.jpeg" alt="Event photo 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="photo-card">
+                        <img src="/images/1.jpeg" alt="Event photo 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="photo-card">
+                        <img src="/images/3.JPG" alt="Event photo 3" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="text-center md:text-left relative z-10">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">
+                        Event Photos
+                    </h2>
+                    <p class="text-lg text-slate-600 mb-8 max-w-md mx-auto md:mx-0">
+                        Relive the best moments from Srishti 2.6. Browse the gallery and download your favorite photos.
+                    </p>
+                    <a href="https://drive.google.com/drive/folders/1xqnPYIikYHRfvqEAiUsM3OxEF5RcEdG3?usp=sharing" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center px-8 py-3 rounded-md text-white font-medium transition-transform hover:scale-105"
+                       style="background: linear-gradient(to right, hsl(var(--primary)), hsl(275, 100%, 25%)); border: 1px solid hsl(var(--accent));">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        Get your event photos
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer Logic
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const cards = entry.target.querySelectorAll('.photo-card');
+                if (entry.isIntersecting) {
+                    cards.forEach(card => card.classList.add('spread'));
+                } else {
+                    cards.forEach(card => card.classList.remove('spread'));
+                }
+            });
+        }, observerOptions);
+
+        const target = document.querySelector('#photo-gallery-container');
+        if (target) {
+            observer.observe(target);
+        }
+    </script>
+</body>
+</html>
+

@@ -8,7 +8,7 @@
     "team": "2",
     "prize": "₹3,000",
     "day": "Day 1",
-    "time": "9:30 PM",
+    "time": "9:30 AM",
     "image": "assets/events/codeX.jpg"
   },
   {
@@ -92,7 +92,7 @@
     "team": "1-4",
     "prize": "₹4,500",
     "day": "Day 2",
-    "time": "11:00 AM",
+    "time": "9:30 AM",
     "image": "assets/events/ardentis.jpg" 
   },
   {

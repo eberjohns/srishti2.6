@@ -563,6 +563,72 @@ header {
     box-shadow: 0 0 15px rgba(109, 40, 217, 0.4);
 }
 
+/* --- LOCATION MAP BUTTON --- */
+.location-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.map-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(109, 40, 217, 0.15);
+    border: 1px solid var(--border-color);
+}
+
+.btn-location-map {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    
+    /* Retro mechanical button housing */
+    background: #0a0a0a;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+    
+    padding: 0 1.5rem;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.1s;
+    position: relative;
+    text-decoration: none;
+    
+    /* The keycap styling */
+    background: linear-gradient(135deg, #6D28D9, #9333EA);
+    border: 2px solid #7c3aed;
+    border-radius: 6px;
+    border-bottom: 6px solid #5b21b6;
+    
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(109, 40, 217, 0.4);
+    
+    transform: translateY(-6px);
+}
+
+.btn-location-map i {
+    font-size: 1rem;
+}
+
+.btn-location-map:hover {
+    transform: translateY(-8px);
+    border-bottom: 6px solid #5b21b6;
+    box-shadow: 0 0 25px rgba(109, 40, 217, 0.6);
+}
+
+.btn-location-map:active {
+    transform: translateY(2px);
+    border-bottom: 2px solid #5b21b6;
+    box-shadow: 0 0 15px rgba(109, 40, 217, 0.4);
+}
+
 .footer-social-link {
     color: var(--text-muted);
     margin: 0 1rem;
